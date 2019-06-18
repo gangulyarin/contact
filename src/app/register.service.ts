@@ -12,7 +12,7 @@ export class RegisterService{
         //console.log(JSON.stringify(user));
         let headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
-        this.http.post("http://referral.invesmate.com/send.php",user,{headers:headers}).subscribe(res=>{
+        this.http.post("send.php",user,{headers:headers}).subscribe(res=>{
             alert("User Registered");
         })
     }
