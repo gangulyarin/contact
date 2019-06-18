@@ -24,12 +24,26 @@ export class AppComponent implements OnInit {
     whatsapp:"",
     email:"",
     location:"",
-    query:"my-query"
+    query:""
     };
   }
 
   register(){
-    this.registerSvc.register(this.user);
+    if(this.registerSvc.register(this.user)==="Success"){
+      alert("Thank you. Our Support Team will call you soon");
+    }
+    else{
+      alert("Somethong Went Wrong!! Try Again");
+    }
+    this.contactForm.reset();
+    this.user={
+      name:"",
+    phone:"",
+    whatsapp:"",
+    email:"",
+    location:"",
+    query:"my-query"
+    };
   }
 
   loginFB(){
@@ -116,7 +130,7 @@ export class AppComponent implements OnInit {
         this.register();
 
       }, (error) => {
-        alert(JSON.stringify(error, undefined, 2));
+        console.log(JSON.stringify(error, undefined, 2));
       });
   }
 

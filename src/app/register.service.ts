@@ -8,12 +8,17 @@ export class RegisterService{
 
     constructor(private http:HttpClient){ }
 
-    register(user:User){
+    register(user:User):string{
         //console.log(JSON.stringify(user));
+        let ret="Success";
         let headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
         this.http.post("send.php",user,{headers:headers}).subscribe(res=>{
-            alert("User Registered");
-        })
+            //alert("Thank you. Our Support Team will call you soon.");
+            ret = "Success";
+        },error=>{
+            ret = "Failed";
+        });
+        return ret;
     }
 }
